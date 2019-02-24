@@ -32,7 +32,7 @@ public class OkHttpUtils {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
-                .connectTimeout(5,TimeUnit.SECONDS)
+                .connectTimeout(10,TimeUnit.SECONDS)
                 .readTimeout(5,TimeUnit.SECONDS)
                 .writeTimeout(5,TimeUnit.SECONDS)
                 .build();
@@ -49,6 +49,48 @@ public class OkHttpUtils {
             }
         }
         return mInstance;
+    }
+    /**
+     * get请求
+     */
+    public void Get(String url,HashMap<String,String> params,final OkhttpCallBack okhttpCallBack){
+        StringBuilder builder = new StringBuilder();
+
+        String nurl = url;
+         if(params != null && params.size()>0){
+            for(Map.Entry<String,String> map : params.entrySet()){
+                builder.append(map.getKey()).append("=").append(map.getValue()).append("&");
+            }
+            nurl = url+"?"+builder.toString();
+        }
+
+        Request request = new Request.Builder().url(nurl).get().build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                if(okhttpCallBack != null){
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            okhttpCallBack.FailUre("网络异常");
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String result = response.body().string();
+                if(okhttpCallBack != null){
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            okhttpCallBack.Success(result);
+                        }
+                    });
+                }
+            }
+        });
     }
     /**
      * post请求
@@ -88,7 +130,6 @@ public class OkHttpUtils {
                 }
             }
         });
-
     }
 
 }

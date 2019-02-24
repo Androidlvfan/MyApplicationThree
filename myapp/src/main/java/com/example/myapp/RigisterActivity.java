@@ -34,6 +34,7 @@ private TextView huoqu;
         rigister_but = findViewById(R.id.rigister_but);
         huoqu = findViewById(R.id.huoqu);//获取二维码
         loginPresenter = new LoginPresenter(this);
+        getSupportActionBar().hide();//隐藏标题栏
     }
         //点击注册
         public void rigister(View view) {

@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BannerBean {
@@ -25,7 +26,7 @@ public class BannerBean {
     }
 
     public List<ResultBean> getResult() {
-        return result;
+        return result != null ? result : new ArrayList<ResultBean>();
     }
 
     public void setResult(List<ResultBean> result) {

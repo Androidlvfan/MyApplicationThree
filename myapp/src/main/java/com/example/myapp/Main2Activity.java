@@ -112,6 +112,7 @@ public class Main2Activity extends AppCompatActivity  {
             }
         });
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        //getSupportActionBar().hide();//隐藏标题栏
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

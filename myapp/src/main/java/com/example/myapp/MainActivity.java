@@ -46,6 +46,7 @@ private SharedPreferences.Editor editor;
         login_remeber = findViewById(R.id.login_remeber);
 
         initData();
+        //getSupportActionBar().hide();//隐藏标题栏
 
           sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
           editor = sharedPreferences.edit();

@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="24dp"
-    android:layout_marginRight="24dp"
-    android:orientation="vertical"
+    android:background="#fff"
+    android:layout_marginTop="5dp"
     android:gravity="center"
-    >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="36dp"
-        >
+    android:orientation="horizontal">
+
         <ImageView
-            android:onClick="more"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/sousuokuang"
+            android:src="@drawable/more"
             />
         <EditText
             android:id="@+id/find"
-            android:layout_width="280dp"
-            android:layout_height="24dp"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
             />
         <ImageView
-            android:id="@+id/find_but"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/sousuohou"
+            android:src="@drawable/search"
             />
-    </LinearLayout>
+
 </LinearLayout>
